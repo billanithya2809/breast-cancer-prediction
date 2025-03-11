@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurviveWell - Contact</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3));
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            padding: 15px 20px;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .navbar .logo span {
+            color: #ff4081;
+        }
+        .tagline {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            font-style: italic;
+            margin-top: -10px;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 40px;
+            background: white;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+        .question {
+            font-weight: bold;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div>
+                <h1 class="logo">Survive<span>Well</span></h1>
+                <p class="tagline">Your trusted gateway to breast cancer prediction and awareness</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Predict</a></li>
+                    <li><a href="{{ url_for('predict') }}">Predict Tool</a></li>
+                    <li><a href="{{ url_for('survival') }}">Breast Cancer Survival</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>Contact & Additional Information</h2>
+        
+        <div class="question">Whom to consult?</div>
+        <p>If you suspect any symptoms of breast cancer, consult a <b>primary care doctor or an oncologist</b> for further evaluation. A breast specialist can provide detailed assessments and recommend diagnostic tests. Seeking guidance from a certified oncologist ensures that you receive the best possible advice on treatment options. Genetic counselors can also help if there's a family history of breast cancer. Regular visits to a <b>gynecologist</b> can aid in early detection. Support groups and cancer care organizations can provide emotional and practical support. Always choose a <b>board-certified physician</b> for reliable diagnosis and treatment. Early consultation can save lives.</p>
+        
+        <div class="question">What tests should you undergo if you have symptoms?</div>
+        <p>Several tests help in diagnosing breast cancer early. A <b>mammogram</b> is the most common screening tool that detects abnormal growths. <b> Ultrasound scans</b> help in differentiating between solid masses and fluid-filled cysts. If further analysis is needed, a <b>biopsy</b> is conducted to examine tissue samples. <b>MRI scans</b> provide detailed imaging for a comprehensive diagnosis. <b>Genetic testing</b> helps identify inherited risk factors. <b>Blood tests</b> can sometimes indicate tumor markers. Clinical breast exams by a specialist are also recommended. Early and regular testing increases the chances of successful treatment.</p>
+        
+        <div class="question">What about radiotherapy?</div>
+        <p>Radiotherapy is often recommended after surgery to eliminate remaining cancer cells. It uses <b> high-energy radiation</b> to target cancerous tissue. The treatment is carefully planned to minimize damage to surrounding healthy tissue. Side effects may include skin irritation and fatigue. The effectiveness of radiotherapy depends on the stage and type of cancer. It is often used alongside chemotherapy or surgery for comprehensive care. Patients must follow up with their oncologist to track recovery progress. Future versions of the Predict tool will incorporate radiotherapy impact analysis.</p>
+        
+        <div class="question">What about other treatments?</div>
+        <p>Several new treatments are emerging in breast cancer research. <b>Immunotherapy</b> is showing promise in boosting the body's natural defense against cancer. <b>Targeted therapy</b> uses drugs that specifically attack cancer cells while sparing normal ones. <b>Hormonal therapy</b> helps in hormone-receptor-positive cancers by blocking growth signals. <b>Gene therapy</b> is being studied as a potential future solution. However, large clinical trials are needed before integrating new treatments into Predict. Always consult an oncologist before considering experimental treatments. Approved treatments are regularly updated in national guidelines.</p>
+        
+        <div class="question">What about neo-adjuvant treatment?</div>
+        <p>Neo-adjuvant chemotherapy is prescribed before surgery to shrink tumors, making operations more effective. It helps in cases where the tumor is large or affecting nearby tissues. The treatment aims to <b>reduce the extent of surgery needed</b>. Patients undergoing this therapy require close monitoring to assess response. Side effects may include nausea, fatigue, and hair loss. This approach is useful in cases of locally advanced breast cancer. However, Predict does not yet include this scenario in risk estimations. Future research will determine its integration into prediction models.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurviveWell - Prediction Result</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3));
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            padding: 15px 20px;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .navbar .logo span {
+            color: #ff4081;
+        }
+        .tagline {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            font-style: italic;
+            margin-top: -10px;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .result-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .high-risk {
+            color: red;
+        }
+        .low-risk {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div>
+                <h1 class="logo">Survive<span>Well</span></h1>
+                <p class="tagline">Your trusted gateway to breast cancer prediction and awareness</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Predict</a></li>
+                    <li><a href="{{ url_for('predict') }}">Predict Tool</a></li>
+                    <li><a href="{{ url_for('survival') }}">Breast Cancer Survival</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="result-container">
+        <h1>Breast Cancer Prediction Result</h1>
+        <h2 class="{{ 'high-risk' if result|int == 1 else 'low-risk' }}">
+            {{ 'High Risk of Breast Cancer' if result|int == 1 else 'Low Risk of Breast Cancer' }}
+        </h2>
+        
+        <p><strong>Probability:</strong> {{ probability }}</p>
+        <p>If breast cancer exists, don't worry. You have a few symptoms, but it can be treated effectively.</p>
+        <br>
+        <a href="{{ url_for('predicthome') }}">Back to Prediction</a>
+
+    </div>
+</body>
+</html>

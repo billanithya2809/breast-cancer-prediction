@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Prediction Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3));
+            color: #333;
+        }
+        .container {
+            padding: 20px;
+            background-color: white;
+            max-width: 900px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #003366;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #d8346b;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleForm() {
+            let mode = document.querySelector('input[name="mode"]:checked').value;
+            let screeningFields = document.getElementById('screening-fields');
+            let symptomsFields = document.getElementById('symptoms-fields');
+
+            if (mode === "screening") {
+                screeningFields.classList.remove('hidden');
+                symptomsFields.classList.add('hidden');
+            } else {
+                symptomsFields.classList.remove('hidden');
+                screeningFields.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Breast Cancer Prediction Tool</h2>
+
+        <div class="form-group">
+            <label>Select Mode:</label>
+            <input type="radio" name="mode" value="screening" checked onclick="toggleForm()"> Full Screening
+            <input type="radio" name="mode" value="symptoms" onclick="toggleForm()"> Symptoms Only
+        </div>
+
+        <form action="backend/app.py" method="POST">
+            
+            <!-- Symptoms-Only Form -->
+            <div id="symptoms-fields" class="hidden">
+                <div class="form-group">
+                    <label>Do you have a lump in the breast?</label>
+                    <select name="lump">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you have nipple discharge?</label>
+                    <select name="discharge">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Is there skin redness or dimpling?</label>
+                    <select name="redness">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you feel persistent pain in the breast?</label>
+                    <select name="pain">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Full Screening Form -->
+            <div id="screening-fields">
+                <div class="form-group">
+                    <label>Age at Diagnosis:</label>
+                    <input type="number" name="age" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Family History of Breast Cancer:</label>
+                    <select name="family_history" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Body Mass Index (BMI):</label>
+                    <input type="number" name="bmi" step="0.1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Smoking Status:</label>
+                    <select name="smoking_status" required>
+                        <option value="Never">Never</option>
+                        <option value="Former Smoker">Former Smoker</option>
+                        <option value="Current Smoker">Current Smoker</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Alcohol Consumption:</label>
+                    <select name="alcohol_consumption" required>
+                        <option value="Never">Never</option>
+                        <option value="Occasionally">Occasionally</option>
+                        <option value="Regularly">Regularly</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Breast Density:</label>
+                    <select name="breast_density" required>
+                        <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Hormone Replacement Therapy (HRT) Usage:</label>
+                    <select name="hrt_usage" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Invasive Tumor Size (mm):</label>
+                    <input type="number" name="tumor_size" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tumor Grade:</label>
+                    <select name="tumor_grade" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Detected By:</label>
+                    <select name="detected" required>
+                        <option value="Screening">Screening</option>
+                        <option value="Symptoms">Symptoms</option>
+                        <option value="Unknown">Unknown</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+
+</body>
+</html>

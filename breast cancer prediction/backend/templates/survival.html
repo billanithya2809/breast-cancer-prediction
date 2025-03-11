@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurviveWell - Breast Cancer Survival Dashboard</title>
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3)); /* Soft radial gradient */
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            padding: 15px 20px;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .navbar .logo span {
+            color: #ff4081; /* Pink color for 'Well' */
+        }
+        .tagline {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            font-style: italic;
+            margin-top: -10px;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .dashboard-section {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Full-Width Dashboard */
+        .dashboard-container {
+            width: 100%;
+            height: 90vh;
+            margin: 0;
+            padding: 0;
+        }
+        #tableauViz {
+            width: 100%;
+            height: 85vh; /* Keeps dashboard large */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <div>
+                <h1 class="logo">Survive<span>Well</span></h1>
+                <p class="tagline">Your trusted gateway to breast cancer prediction and awareness</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Predict</a></li>
+                    <li><a href="{{ url_for('predict') }}">Predict Tool</a></li>
+                    <li><a href="{{ url_for('survival') }}">Breast Cancer Survival</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <main>
+        <section class="dashboard-section">
+            <h2>Breast Cancer Survival Dashboard</h2>
+            <p>Explore the interactive dashboard below to analyze breast cancer survival rates based on various factors.</p>
+        </section>
+
+        <!-- Tableau Dashboard -->
+        <div class="dashboard-container">
+            <div id="tableauViz"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Privacy Policy | Terms & Conditions</p>
+    </footer>
+
+    <script>
+        var containerDiv = document.getElementById("tableauViz");
+        var url = "https://public.tableau.com/views/breastcancer_17402735473460/Dashboard3?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+        var options = {
+            hideTabs: true,
+            width: "100%",
+            height: "100%",
+            onFirstInteractive: function () {
+                console.log("Tableau Dashboard Loaded Successfully");
+            }
+        };
+
+        var viz = new tableau.Viz(containerDiv, url, options);
+    </script>
+
+</body>
+</html>

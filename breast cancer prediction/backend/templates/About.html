@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurviveWell - About Predict</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3));
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            padding: 15px 20px;
+            color: white;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .navbar .logo span {
+            color: #ff4081;
+        }
+        .tagline {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            font-style: italic;
+            margin-top: -10px;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 40px;
+            background: white;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+        .question {
+            font-weight: bold;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div>
+                <h1 class="logo">Survive<span>Well</span></h1>
+                <p class="tagline">Your trusted gateway to breast cancer prediction and awareness</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Predict</a></li>
+                    <li><a href="{{ url_for('predict') }}">Predict Tool</a></li>
+                    <li><a href="{{ url_for('survival') }}">Breast Cancer Survival</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>About Predict Breast Cancer</h2>
+        
+        <div class="question">Why should we predict breast cancer?</div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='treatment2.avif') }}" alt="Breast Cancer treatment">
+        </div>
+        <p>Early prediction of breast cancer helps in preventing complications and increases the chances of a successful treatment with minimal intervention.</p>
+        <p>Breast cancer prediction helps in assessing the risk of developing cancer early, enabling timely medical intervention. Early detection improves survival rates by ensuring that treatment starts before the disease advances. It provides individuals with insights about lifestyle changes to reduce risks. Predicting breast cancer also supports clinicians in making informed treatment plans. It helps in identifying high-risk groups for preventive measures. Genetic and environmental factors can be analyzed to create personalized healthcare plans. Increased awareness through prediction tools leads to regular check-ups. Overall, it empowers individuals to take proactive steps towards their health.</p>
+        
+        <div class="question">How are people suffering with this?</div>
+        <p>Breast cancer affects millions of people worldwide, causing emotional, physical, and financial stress.Patients may experience side effects from treatments such as chemotherapy and radiation. Proper medical guidance can help manage these effects. The psychological impact, including anxiety and depression, is significant among patients and their families. Access to quality healthcare remains a challenge, especially in underprivileged areas. Early-stage symptoms are often ignored, leading to late diagnosis and reduced survival chances. The social stigma around cancer can make it difficult for patients to seek timely help. Financial burdens due to treatment costs can be overwhelming. Continuous support, awareness, and better prediction methods can improve patient outcomes.</p>
+        
+        <div class="question">How predicting breast cancer helps in detecting cancer in early stages?</div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='symptoms.png') }}" alt="Breast Cancer Symptoms">
+        </div>
+        <p>Early prediction tools help identify cancer before symptoms become severe, increasing survival rates significantly. They enable doctors to monitor high-risk individuals more closely and recommend early screenings. Early-stage detection allows for less invasive and more effective treatment options. It reduces the chances of metastasis, where cancer spreads to other body parts. Predictive models analyze genetic and lifestyle factors to provide risk assessments. Regular use of prediction tools encourages individuals to undergo frequent check-ups. It aids in faster decision-making for both patients and medical professionals. Overall, early prediction saves lives and reduces long-term healthcare costs.</p>
+    </div>
+</body>
+</html>

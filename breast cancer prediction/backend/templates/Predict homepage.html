@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurviveWell</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, white 60%, rgba(244, 168, 180, 0.3)); /* Radial gradient with light red */
+            color: #333;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            padding: 15px 20px;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .navbar .logo span {
+            color: #ff4081; /* Pink color for 'Well' */
+        }
+        .tagline {
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            font-style: italic;
+            margin-top: -10px;
+        }
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        .navbar nav ul li {
+            display: inline;
+        }
+        .navbar nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .intro {
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+        .start-btn {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .language-dropdown {
+            margin-top: 10px;
+            padding: 5px;
+        }
+        .info {
+            padding: 20px;
+            background-color: #e0e0e0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div>
+                <h1 class="logo">Survive<span>Well</span></h1>
+                <p class="tagline">Your trusted gateway to breast cancer prediction and awareness</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Predict</a></li>
+                    <li><a href="{{ url_for('predicthome') }}">Predict Tool</a></li>
+                    <li><a href="{{ url_for('survival') }}">Breast Cancer Survival</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    <li><a href="#">Legal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <img src="{{ url_for('static', filename='bcancer.png') }}" alt="Predict Tool Image">
+            <h2>What is Predict?</h2>
+            <p>Predict is an online tool that helps patients and clinicians see how different treatments for early invasive breast cancer might improve survival rates after surgery.</p>
+            <a href="{{ url_for('predicthome') }}">
+            <button class="start-btn">Start Predict</button>
+            </a>
+            <select class="language-dropdown">
+                <option>Change Language</option>
+            </select>
+        </section>
+
+        <section class="info">
+            <h3>What does Predict do?</h3>
+            <p>Predict asks for some details about the patient and the cancer. It then uses data about the survival of similar women in the past to show the likely proportion of such...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Privacy Policy | Terms & Conditions</p>
+    </footer>
+</body>
+</html>
